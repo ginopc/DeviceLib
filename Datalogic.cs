@@ -5,11 +5,11 @@ namespace SelfDC.Utils
 {
     public class Datalogic : IDevice
     {
-        private string className;
+        private string className = "DataLogic";
         private bool _enabled;
-        private string _version = "0.0.1";
+        private string _version = "2014.11.25.r01";
         private datalogic.datacapture.Laser bcReader;
-        private string _barcode;
+        private string _barcode = null;
 
         public event EventHandler OnScan;
 
@@ -97,6 +97,13 @@ namespace SelfDC.Utils
         private void OnBarcodeScan(datalogic.datacapture.ScannerEngine sender)
         {
             this._barcode = sender.BarcodeDataAsText.ToString();
+            /*
+            Console.WriteLine("Lista degli register all'evento OnScan:");
+            foreach (Delegate register in this.OnScan.GetInvocationList())
+            {
+                Console.WriteLine("delegato {0}: {1}", register.Method.ToString(), register.Target.ToString());
+            }
+             */ 
             if (this.OnScan != null)
                 OnScan(this, EventArgs.Empty);
         }

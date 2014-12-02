@@ -4,11 +4,11 @@ namespace SelfDC.Utils
 {
     public class Motorola : IDevice
     {
-        private string className;
+        private string className = "Motorola";
         private bool _enabled;
         private Symbol.Barcode2.Design.Barcode2 bcReader;
-        private string _version = "0.0.1";
-        private string _barcode;
+        private string _version = "2014.11.25.r01";
+        private string _barcode = null;
 
         public event EventHandler OnScan;
 
